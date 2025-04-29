@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: azure-openai-spring-app
+
+azure:
+  openai:
+    endpoint: https://aoai-fastai-rag.openai.azure.com/
+    api-key: your-api-key
+    chat-model: gpt-4o-mini
+  search:
+    endpoint: https://aisearch-fastai-rag.search.windows.net
+    index-name: sopravector
+    api-key: your-api-key
+
+logging:
+  level:
+    com.soprasteria: debug
+    com.azure: debug
