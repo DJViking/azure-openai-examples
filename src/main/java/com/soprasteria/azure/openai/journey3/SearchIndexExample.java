@@ -20,7 +20,7 @@ import com.azure.search.documents.indexes.models.VectorSearchProfile;
 public class SearchIndexExample {
 
     private static final String searchEndpoint = "https://aisearch-fastai-rag.search.windows.net";
-    private static final String searchApiKey = "<your-api-key>";
+    private static final String searchApiKey = "<api-key>";
 
     public static void main(String[] args) {
         final var searchIndexClient = new SearchIndexClientBuilder()

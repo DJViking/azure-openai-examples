@@ -14,6 +14,7 @@ import com.azure.search.documents.models.IndexAction;
 import com.azure.search.documents.models.IndexActionType;
 import com.azure.search.documents.models.IndexDocumentsResult;
 import com.azure.search.documents.models.IndexingResult;
+import com.soprasteria.azure.openai.journey3.utils.Scenarios;
 import com.soprasteria.azure.openai.journey3.utils.Utils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -27,8 +28,8 @@ import org.apache.parquet.hadoop.example.GroupReadSupport;
 public class AzureParquetExample {
 
     private static final String searchEndpoint = "https://aisearch-fastai-rag.search.windows.net";
-    private static final String searchApiKey = "bOPPOpP7hSAA59vcW1JUMRoL5r3jCh0yUMiiU4SE5cAzSeCDhpqp";
-    private static final String searchIndexPrefix = "dbpediaindex";
+    private static final String searchApiKey = "<api-key>";
+    private static final String searchIndexPrefix = "compression-test";
     private static final String parquetFile = "dbpedia_100k.parquet";
 
     private static final ParquetDataSet parquetDataSet = new ParquetDataSet();
@@ -37,12 +38,12 @@ public class AzureParquetExample {
         final var manager = new AzureSearchIndexManager(
             searchEndpoint,
             searchApiKey,
-            "demoindex",
+            searchIndexPrefix,
             3072
         );
 
         manager.createIndexes();
-        final var scenarios = manager.getScenarios();
+        final var scenarios = Scenarios.defineTestScenarios();
 
         parquetDataSet.createDataSet();
         parquetDataSet.readDataSet();
